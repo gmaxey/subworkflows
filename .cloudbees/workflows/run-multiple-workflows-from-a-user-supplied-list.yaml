@@ -4,7 +4,7 @@ name: Run multiple workflows from a user-supplied list # of workflow definition 
 on:
   workflow_dispatch:
     inputs:
-      workflow:
+      workflows:
         type: string
         description: Comma-separated values of workflow definition IDs
 jobs:
