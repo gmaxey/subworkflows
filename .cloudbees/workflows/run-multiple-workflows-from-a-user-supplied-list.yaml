@@ -1,0 +1,14 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Run multiple workflows from a user-supplied list # of workflow definition IDs
+on:
+  workflow_dispatch:
+    inputs:
+      workflow:
+        type: string
+        description: Comma-separated values of workflow definition IDs
+jobs:
+  launch-multiple-workflow:
+    delegates: cloudbees-io/run-workflows/custom-job.yml@v1
+    with:
+      workflows: ${{ inputs.workflows }}
