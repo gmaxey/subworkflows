@@ -6,7 +6,7 @@ on:
     inputs:
       workflows:
         type: string
-        description: Comma-separated values of workflow definition IDs
+        description: JSON structure with build runs and deploy workflow IDs
 jobs:
   launch-multiple-workflow:
     delegates: cloudbees-io/run-workflows/custom-job.yml@v1
