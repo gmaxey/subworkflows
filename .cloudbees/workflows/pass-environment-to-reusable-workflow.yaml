@@ -4,9 +4,7 @@ name: Pass environment to reusable workflow
 on:
   workflow_dispatch:
 jobs:
-  build:
-    steps:
-      - name: Run reusable workflow
-        uses: gmaxey/reusableworkflows/env.yaml
-        with:
-          env: prod
+  run-reusable-workflow:
+    uses: gmaxey/reusableworkflows/env.yaml
+    with:
+        env: prod
