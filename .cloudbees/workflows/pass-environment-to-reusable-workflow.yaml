@@ -3,8 +3,21 @@ kind: workflow
 name: Pass environment to reusable workflow
 on:
   workflow_dispatch:
+    inputs:
+      env:
+        type: string
+        required: true
+        default: myenv
 jobs:
+  local-env:
+    environment: ${{ inputs.env }}
+    steps:
+      - name: echo env namespace
+        kind: deploy
+        uses: docker://golang:1.20.3-alpine3.17
+        run: echo ${{ vars.namespace }}
   run-reusable-workflow:
+    needs: local-env
     uses: gmaxey/reusableworkflows/env.yaml
     with:
-        env: myenv
+      env: ${{ inputs.env }}
