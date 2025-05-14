@@ -7,4 +7,4 @@ jobs:
   run-reusable-workflow:
     uses: gmaxey/reusableworkflows/env.yaml
     with:
-        env: prod
+        env: myenv
