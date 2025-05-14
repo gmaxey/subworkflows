@@ -1,0 +1,12 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Pass environment to reusable workflow
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    steps:
+      - name: Run reusable workflow
+        uses: gmaxey/reusableworkflows/env.yaml
+        with:
+          env: prod
