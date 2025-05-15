@@ -12,10 +12,8 @@ on:
         required: true
 jobs:
   deploy:
-    steps:
-      - name: Inform system that an artifact version was deployed
-        uses: cloudbees-io/register-deployed-artifact@greg_env_playground
-        with:
-          name: "${{ inputs.artifactName }}"
-          version: "${{ inputs.artifactVersion }}"
-          url: "docker.io/MyApp/${{ inputs.artifactName }}:${{ inputs.artifactVersion }}"
+    uses: cloudbees-io/register-deployed-artifact@greg_env_playground
+    with:
+      name: "${{ inputs.artifactName }}"
+      version: "${{ inputs.artifactVersion }}"
+      url: "docker.io/MyApp/${{ inputs.artifactName }}:${{ inputs.artifactVersion }}"
