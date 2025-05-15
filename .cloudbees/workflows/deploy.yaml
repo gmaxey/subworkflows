@@ -10,12 +10,6 @@ on:
       artifactVersion:
         type: string
         required: true
-      url:
-        type: string
-        required: false
-      digest:
-        type: string
-        required: false
 jobs:
   deploy:
     steps:
