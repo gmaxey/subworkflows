@@ -1,0 +1,14 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: build
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  build:
+    uses: gmaxey/reusableworkflows/MyAppBuild.yaml
+    with:
+      artifactName: Subworkflow
+      baseVersion: 1.0.0
+      digest: sha256:108efb51e55b15ac34a46aaa9bfe269df1a594e75bdcd5a2e631c6f1e39ad128
