@@ -12,6 +12,7 @@ on:
         required: true
 jobs:
   deploy:
+    # environment: how does this get set from the caller's job environment context
     uses: cloudbees-io/register-deployed-artifact@greg_env_playground
     with:
       name: "${{ inputs.artifactName }}"
