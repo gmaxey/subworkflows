@@ -1,13 +1,62 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
-name: My workflow
+name: reusable
 on:
   workflow_call:
+    inputs:
+      targetenv:
+        type: string
+        required: false
+
 jobs:
-  build:
+  # testhardcoded1:
+  #   environment: environment_mlcb_test_param
+  #   steps:
+  #     - name: Print testvar
+  #       uses: docker://golang:1.20.3-alpine3.17
+  #       shell: sh
+  #       run: |
+  #         echo " do I get the approval ?"
+
+  # testparamenv1:
+  #   environment: ${{ inputs.targetenv }}
+  #   steps:
+  #     - name: Print testvar
+  #       uses: docker://golang:1.20.3-alpine3.17
+  #       shell: sh
+  #       run: |
+  #         echo " do I get the approval ?"
+
+  
+  # testhardcoded:
+  #   environment: ${{ 'environment_mlcb_test_param' }}
+  #   steps:
+  #     - name: Print testvar
+  #       uses: docker://golang:1.20.3-alpine3.17
+  #       shell: sh
+  #       run: |
+  #         echo "testvar: ${{ vars.testvar }}"
+  #     - name: Print testsec
+  #       uses: docker://golang:1.20.3-alpine3.17
+  #       shell: sh
+  #       run: |
+  #         echo "testvar: ${{ secrets.testsec }}"
+
+  testparamenv:
+    environment: ${{ inputs.targetenv }}
     steps:
-      - name: Say hello
+      - name: Print env
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "hello world"
+          echo "environment: ${{ inputs.targetenv }}"
+      - name: Print testvar
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testvar: ${{ vars.testvar }}"
+      - name: Print testsec
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testvar: ${{ secrets.testsec }}"
