@@ -9,6 +9,13 @@ on:
         required: true
         default: myenv
 jobs:
+  hard-env:
+    environment: myenv
+    steps:
+      - name: echo env namespace
+        kind: deploy
+        uses: docker://golang:1.20.3-alpine3.17
+        run: echo ${{ vars.namespace }}   
   local-env:
     environment: ${{ inputs.env }}
     steps:
