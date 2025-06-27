@@ -11,4 +11,3 @@ jobs:
         shell: sh
         run: |
           echo ${{ vars.prop }}
-          echo ${{ secrets.sec }}
