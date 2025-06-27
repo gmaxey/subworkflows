@@ -4,7 +4,16 @@ name: call props wf
 on:
   workflow_dispatch:
 jobs:
+  build:
+    steps:
+      - name: echo org property
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo ${{ vars.prop }}
+          echo ${{ secrets.sec }}
   call_rwf:
+    needs: build
     uses: gmaxey/subworkflows/.cloudbees/workflows/use-properties.yaml
     secrets:
       sec: ${{ secrets.sec }}
