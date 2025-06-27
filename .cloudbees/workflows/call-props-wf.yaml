@@ -13,6 +13,7 @@ jobs:
           echo ${{ vars.prop }}
           echo ${{ secrets.sec }}
   call_rwf:
+    if: 'false'
     needs: build
     uses: gmaxey/subworkflows/.cloudbees/workflows/use-properties.yaml
     secrets:
