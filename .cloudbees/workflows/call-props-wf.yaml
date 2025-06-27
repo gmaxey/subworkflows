@@ -15,5 +15,6 @@ jobs:
   call_rwf:
     needs: build
     uses: gmaxey/subworkflows/.cloudbees/workflows/use-properties.yaml
+    vars: inherit
     secrets:
       sec: ${{ secrets.sec }}
